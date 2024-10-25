@@ -1206,7 +1206,7 @@ class DPOTrainer(Trainer):
 
         # Add the pixel values and attention masks for vision models
         if "pixel_values" in concatenated_batch:
-            model_kwargs["pixel_values"] = concatenated_batch["pixel_values"]
+            model_kwargs["pixel_values"] = concatenated_batch["pixel_values"].to(torch.bfloat16) 
         if "pixel_attention_mask" in concatenated_batch:
             model_kwargs["pixel_attention_mask"] = concatenated_batch["pixel_attention_mask"]
 
